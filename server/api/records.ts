@@ -1,8 +1,7 @@
 // Imports libraries
 import { Router } from "express";
 
-// Imports mock data
-import { records } from "../models/mockRecords";
+// Imports data models
 import { RecordsAPI } from "../models/records";
 
 const router = Router();

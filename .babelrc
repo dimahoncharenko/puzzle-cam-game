@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "@babel/preset-react",
+      {
+        "bugfixes": true
+      }
+    ],
+
+    "@babel/preset-env",
+    "@babel/preset-typescript"
+  ],
+  "ignore": ["node_modules", "build"]
+}

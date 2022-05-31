@@ -1,5 +1,5 @@
 # puzzle-cam-game
-Browser Puzzle Game with using Canvas API, webcam access and Postgres DB
+Browser Puzzle Game with using Typescript, React, React Hooks, Canvas API, webcam access and Postgres DB.
 
 # Requirements:
 - Postgres DB;

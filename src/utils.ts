@@ -282,7 +282,6 @@ export class FXSound {
 
   play() {
     this.currents[this.counter % this.maxCurrents].play();
-    console.log(this.counter % this.maxCurrents);
     this.counter++;
   }
 

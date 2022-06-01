@@ -19,8 +19,8 @@ import { useForm } from "../../hooks/useForm";
 // Imports assest
 import logo from "../../images/PuzzleCamLogo.svg";
 
-// Imports utils
-import { records } from "../../../server/models/mockRecords";
+// Imports types
+import { Record } from "../../../server/models/records";
 
 // Declares types
 type Props = {
@@ -30,7 +30,7 @@ type Props = {
   difficulty: string;
 };
 
-type State = typeof records;
+type State = Record[];
 
 export const Score = ({
   isOpened,
@@ -52,18 +52,12 @@ export const Score = ({
   const addNewRecord = () => {
     if (!name.trim()) return;
 
-    const newRecord: State[number] = {
-      name,
-      time,
-      difficulty,
-    };
-
     fetch("http://localhost:5000/record/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newRecord),
+      body: JSON.stringify({ name, time, difficulty }),
     })
       .then((res) => res.json())
       .catch(console.error);

@@ -6,7 +6,7 @@ config({ path: "./server/.env" });
 
 // Declares types
 type Difficulty = "Easy" | "Medium" | "Hard" | "Extreme";
-type Record = {
+export type Record = {
   id: number;
   time: string;
   name: string;

@@ -1,6 +1,6 @@
 // Imports libraries
-import { Pool } from "pg";
 import { config } from "dotenv";
+import { PrismaClient } from "@prisma/client";
 
 config({ path: "./server/.env" });
 
@@ -14,27 +14,18 @@ export type Record = {
 };
 
 type AddRecordParam = {
-  time: string;
-  name: string;
-  difficulty: Difficulty;
+  time: Record["time"];
+  name: Record["name"];
+  difficulty: Record["difficulty"];
 };
 
-const pool = new Pool({
-  user: process.env.PG_USER,
-  host: "localhost",
-  port: 9969,
-  password: process.env.PG_PASS,
-  database: process.env.PG_DB,
-});
+const prisma = new PrismaClient();
 
 class RecordsAPI {
   async getRecords() {
     try {
-      const records = await pool.query<Record[]>(
-        `SELECT * FROM ${process.env.PG_TABLE}`
-      );
-
-      return records.rows;
+      const records = await prisma.record.findMany({});
+      return records;
     } catch (err) {
       console.error(err);
       return false;
@@ -43,10 +34,11 @@ class RecordsAPI {
 
   async addRecord(newRecord: AddRecordParam) {
     try {
-      await pool.query(
-        `INSERT INTO ${process.env.PG_TABLE} (name, time, difficulty) VALUES ($1, $2, $3)`,
-        [newRecord.name, newRecord.time, newRecord.difficulty]
-      );
+      await prisma.record.create({ data: {
+        name: newRecord.name,
+        time: newRecord.time,
+        difficulty: newRecord.difficulty
+      }});
 
       return true;
     } catch (err) {

@@ -19,9 +19,11 @@ import {
   PointProps,
   FXSound,
 } from "../../utils";
+import doneFX from "../../assets/sounds/done.wav";
+import putFX from "../../assets/sounds/put.wav";
 
-const putSound = new FXSound("./sounds/put.wav", 0.5, 3);
-const winSound = new FXSound("./sounds/done.wav", 0.5, 3);
+const putSound = new FXSound(putFX, 0.5, 3);
+const winSound = new FXSound(doneFX, 0.5, 3);
 
 export const Display = () => {
   const [offset, setOffset] = useState<PointProps>({ x: 0, y: 0 });

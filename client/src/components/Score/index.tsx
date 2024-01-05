@@ -17,10 +17,10 @@ import {
 import { useForm } from "../../hooks/useForm";
 
 // Imports assest
-import logo from "../../images/PuzzleCamLogo.svg";
+import logo from "../../assets/images/PuzzleCamLogo.svg";
 
 // Imports types
-import { Record } from "../../../server/models/records";
+import { Record } from "../../utils";
 
 // Declares types
 type Props = {

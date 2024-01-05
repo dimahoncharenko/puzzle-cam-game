@@ -4,9 +4,6 @@ import React, { useState, ChangeEvent } from "react";
 // Imports styled components
 import { SelectInfo, SelectButton, SelectList } from "../../styled/Select";
 
-// Imports assets
-import logo from "../../images/PuzzleCamLogo.svg";
-
 // Declares types
 type Props = {
   start: (difficulty: string) => void;

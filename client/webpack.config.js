@@ -1,5 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { resolve } = require("path");
-const externals = require("webpack-node-externals");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -11,6 +11,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".json", ".scss", ".tsx", ".js", ".jsx"],
   },
+  
   resolve: {
     extensions: [
       ".jsx",
@@ -54,4 +55,5 @@ module.exports = {
       },
     ],
   },
+  plugins: [new HtmlWebpackPlugin({ template: "./index.html" })],
 };

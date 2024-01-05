@@ -1,5 +1,5 @@
 // Imports libraries
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import { IoMdClose } from "react-icons/io";
 
 // Imports styled components

@@ -2,7 +2,7 @@ const { resolve } = require("path");
 const externals = require("webpack-node-externals");
 
 module.exports = {
-  entry: "./server/index.ts",
+  entry: "./index.ts",
   output: {
     path: resolve("./"),
     filename: "server.bundle.js",

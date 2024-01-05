@@ -1,6 +1,14 @@
 // Imports types
-import e from "express";
 import { State } from "./hooks/useCanvas";
+
+// Declares types
+type Difficulty = "Easy" | "Medium" | "Hard" | "Extreme";
+export type Record = {
+  id: number;
+  time: string;
+  name: string;
+  difficulty: Difficulty;
+};
 
 export function tick(ctx: CanvasRenderingContext2D, state: State) {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -305,3 +313,41 @@ export const getSelectedPiece = ({ x, y }: PointProps, pieces: Piece[]) => {
 
   return null;
 };
+
+const allConstruct = (targetString: string, wordBank: string[]) => {
+  // Set up the table
+  const table: string[][][] = Array(targetString.length + 1)
+    .fill(0)
+    .map(() => []);
+  // Set up the seed
+  table[0].push([]);
+
+  // It's time to main algorithm
+  for (let i = 0; i < table.length; i++) {
+    const sliced = targetString.slice(i);
+    for (const word of wordBank) {
+      if (i + word.length < table.length) {
+        if (sliced.startsWith(word)) {
+          // Push all subarrays of current index to (i + word.length) index,
+          // but first in all the subarrays of current index you push the word
+          for (const combination of table[i]) {
+            table[i + word.length].push(combination.concat([word]));
+          }
+        }
+      }
+    }
+  }
+
+  return table[targetString.length];
+};
+
+console.log(
+  allConstruct("purple", [
+    "aaaaaaaaaaaaaaaaaaaaaa",
+    "a",
+    "aa",
+    "aaa",
+    "aaaa",
+    "aaaaa",
+  ])
+);

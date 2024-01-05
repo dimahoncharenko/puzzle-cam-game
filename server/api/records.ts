@@ -15,7 +15,8 @@ router.get("/records", async (req, res) => {
 router.post("/record/add", async (req, res) => {
   const { name, time, difficulty } = req.body;
 
-  if (!name || !time || !difficulty) {
+  
+  if (!name || !time || !difficulty) {  
     return res
       .status(400)
       .json("Please provide full and correct data records!");
@@ -26,7 +27,7 @@ router.post("/record/add", async (req, res) => {
     time,
     difficulty,
   };
-
+  
   const op = await recordsAPI.addRecord(newRecord);
   if (!op) {
     return res.json(op);

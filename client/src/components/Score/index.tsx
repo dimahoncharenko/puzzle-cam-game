@@ -43,7 +43,7 @@ export const Score = ({
   const [scoreIsShown, setScoreIsShown] = useState(false);
 
   const showScore = () => {
-    fetch("http://localhost:5000/records")
+    fetch("https://puzzle-cam-game-mgm4-7rfr4i61g-dimahoncharenko.vercel.app/")
       .then((res) => res.json())
       .then(setRecords)
       .then(() => setScoreIsShown(true));
@@ -52,7 +52,7 @@ export const Score = ({
   const addNewRecord = () => {
     if (!name.trim()) return;
 
-    fetch("http://localhost:5000/record/add", {
+    fetch("https://puzzle-cam-game-mgm4-7rfr4i61g-dimahoncharenko.vercel.app/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -6,7 +6,8 @@
   "scripts": {
     "build:app": "webpack --mode production --config webpack.config.server.js",
     "dev": "nodemon ./index.ts",
-    "start": "node ./server.bundle.js"
+    "rush": "node ./server.bundle.js",
+    "start": "npm install && npm rush"
   },
   "author": "",
   "license": "ISC",
